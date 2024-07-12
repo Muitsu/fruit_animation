@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_fruits_animation/utils/colors.dart';
 import 'package:flutter_fruits_animation/utils/sizing.dart';
 import 'package:flutter_svg/svg.dart';
@@ -27,7 +26,7 @@ class _NavBarState extends State<NavBar> {
               onTap: () {},
               child: Text(
                 "Fruits",
-                style: GoogleFonts.lobster(textStyle: TextStyle(fontSize: 30, color: AppColors.white)),
+                style: GoogleFonts.lobster(textStyle: const TextStyle(fontSize: 30, color: AppColors.white)),
               ),
             ),
           ),
@@ -57,7 +56,7 @@ class _NavBarState extends State<NavBar> {
               alignment: Alignment.centerRight,
               child: TextButton.icon(
                 onPressed: () {},
-                label: Text("Choose Your Favorite Beer", style: TextStyle(color: AppColors.white, fontSize: 20)),
+                label: const Text("Choose Your Favorite Beer", style: TextStyle(color: AppColors.white, fontSize: 20)),
                 icon: SvgPicture.asset("assets/icons/cup.svg"),
               ),
             ),

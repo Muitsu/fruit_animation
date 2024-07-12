@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fruits_animation/components/carousel_card.dart';
-import 'package:flutter_fruits_animation/components/follow.dart';
 import 'package:flutter_fruits_animation/utils/colors.dart';
 import 'package:flutter_fruits_animation/utils/nav_bar.dart';
 import 'package:flutter_fruits_animation/utils/sizing.dart';
@@ -18,9 +17,9 @@ class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   final gradientColors = [
     HomeGradient(
-        0, AppColors.strawberry, AppColors.strawberry_light, "Strawberry"),
-    HomeGradient(1, AppColors.orange, AppColors.orange_light, "Orange"),
-    HomeGradient(2, AppColors.apple, AppColors.apple_light, "Apple"),
+        0, AppColors.strawberry, AppColors.strawberryLight, "Strawberry"),
+    HomeGradient(1, AppColors.orange, AppColors.orangeLight, "Orange"),
+    HomeGradient(2, AppColors.apple, AppColors.appleLight, "Apple"),
   ];
   int activeIndex = 0;
   final duration = const Duration(milliseconds: 2000);
@@ -47,12 +46,14 @@ class _MyHomePageState extends State<MyHomePage>
     ).animate(curve(_controller!));
 
     _textTranslationAnimation = Tween<Offset>(
-      begin: index > activeIndex ? Offset(1000, 0) : Offset(-1000, 0),
+      begin:
+          index > activeIndex ? const Offset(1000, 0) : const Offset(-1000, 0),
       end: Offset.zero,
     ).animate(curve(_controller!));
 
     _fruitsTranslationAnimation = Tween<Offset>(
-      begin: index > activeIndex ? Offset(0, 1000) : Offset(0, -1000),
+      begin:
+          index > activeIndex ? const Offset(0, 1000) : const Offset(0, -1000),
       end: Offset.zero,
     ).animate(curve(_controller!));
   }
@@ -166,7 +167,7 @@ class _MyHomePageState extends State<MyHomePage>
                           index: item.index,
                           activeIndex: activeIndex,
                           onTap: () {
-                            print('$item');
+                            debugPrint('$item');
                             _toggleAnimation(item.index);
                             setState(() => activeIndex = item.index);
                           },
@@ -178,14 +179,14 @@ class _MyHomePageState extends State<MyHomePage>
               ),
             ),
           ),
-          Positioned(
-            bottom: 10,
-            left: 0,
-            child: Follow(
-              activeIndex: activeIndex,
-              duration: duration,
-            ),
-          ),
+          // Positioned(
+          //   bottom: 10,
+          //   left: 0,
+          //   child: Follow(
+          //     activeIndex: activeIndex,
+          //     duration: duration,
+          //   ),
+          // ),
           const Positioned(top: 0, child: NavBar()),
         ],
       ),
@@ -196,7 +197,7 @@ class _MyHomePageState extends State<MyHomePage>
     return MouseRegion(
       onEnter: (event) {},
       child: InkWell(
-        mouseCursor: MaterialStateMouseCursor.clickable,
+        mouseCursor: WidgetStateMouseCursor.clickable,
         onTap: () => onTap(),
         child: Container(
           height: Sizing.height(context) / 6,
@@ -220,7 +221,7 @@ class _MyHomePageState extends State<MyHomePage>
                       width: Sizing.width(context) / 450),
             ),
           ),
-          child: Image.asset("assets/images/card_${index}.png"),
+          child: Image.asset("assets/images/card_$index.png"),
         ),
       ),
     );

@@ -53,7 +53,7 @@ class _CarouselCardState extends State<CarouselCard> {
             ),
           ),
           child: AnimatedScale(
-            duration: Duration(milliseconds: 100),
+            duration: const Duration(milliseconds: 100),
             scale: isLarge ? 0.8 : 0.75,
             child: Image.asset(
               "assets/images/card_${widget.index}.png",

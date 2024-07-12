@@ -38,11 +38,6 @@ class Follow extends StatelessWidget {
                 : AppColors.apple,
         child: TextButton.icon(
           style: TextButton.styleFrom(
-            // backgroundColor: activeIndex == 0
-            //     ? AppColors.strawberry
-            //     : activeIndex == 1
-            //         ? AppColors.orange
-            //         : AppColors.apple,
             fixedSize: Size(Sizing.width(context) / 12, 30),
             alignment: Alignment.centerLeft,
             shape: RoundedRectangleBorder(
@@ -54,12 +49,13 @@ class Follow extends StatelessWidget {
           },
           label: Text(
             link.title,
-            style: TextStyle(color: AppColors.white),
+            style: const TextStyle(color: AppColors.white),
           ),
-          icon: SvgPicture.asset(
-            "assets/icons/${link.icon}.svg",
-            color: AppColors.white,
-          ),
+          icon: SvgPicture.asset("assets/icons/${link.icon}.svg",
+              colorFilter: const ColorFilter.mode(
+                AppColors.white,
+                BlendMode.color,
+              )),
         ),
       ),
     );
@@ -72,19 +68,19 @@ class Follow extends StatelessWidget {
         children: [
           Container(
             width: Sizing.width(context) / 10,
-            padding: EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(2),
             ),
-            child: Center(
+            child: const Center(
                 child: Text("Follow For More", style: TextStyle(fontSize: 12))),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Container(
             width: Sizing.width(context) / 10,
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-            margin: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+            margin: const EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(2),
@@ -98,15 +94,15 @@ class Follow extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Container(
             width: Sizing.width(context) / 10,
-            padding: EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(2),
             ),
-            child: Center(
+            child: const Center(
                 child: Text("Coded by Yunwen", style: TextStyle(fontSize: 12))),
           ),
         ],
