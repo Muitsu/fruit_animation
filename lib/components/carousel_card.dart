@@ -6,7 +6,11 @@ class CarouselCard extends StatefulWidget {
   final int index;
   final int activeIndex;
   final VoidCallback onTap;
-  const CarouselCard({super.key, required this.index, required this.activeIndex, required this.onTap});
+  const CarouselCard(
+      {super.key,
+      required this.index,
+      required this.activeIndex,
+      required this.onTap});
 
   @override
   State<CarouselCard> createState() => _CarouselCardState();
@@ -24,7 +28,7 @@ class _CarouselCardState extends State<CarouselCard> {
         setState(() => isLarge = false);
       },
       child: InkWell(
-        mouseCursor: MaterialStateMouseCursor.clickable,
+        mouseCursor: WidgetStateMouseCursor.clickable,
         onTap: () => widget.onTap(),
         child: Container(
           height: Sizing.height(context) / 6,
@@ -36,8 +40,16 @@ class _CarouselCardState extends State<CarouselCard> {
                     ? AppColors.orange
                     : AppColors.apple,
             border: BorderDirectional(
-              start: widget.index == 0 ? BorderSide.none : BorderSide(color: AppColors.white, width: Sizing.width(context) / 450),
-              end: widget.index == 2 ? BorderSide.none : BorderSide(color: AppColors.white, width: Sizing.width(context) / 450),
+              start: widget.index == 0
+                  ? BorderSide.none
+                  : BorderSide(
+                      color: AppColors.white,
+                      width: Sizing.width(context) / 450),
+              end: widget.index == 2
+                  ? BorderSide.none
+                  : BorderSide(
+                      color: AppColors.white,
+                      width: Sizing.width(context) / 450),
             ),
           ),
           child: AnimatedScale(

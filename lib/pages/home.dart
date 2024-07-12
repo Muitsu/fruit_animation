@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_fruits_animation/components/carousel_card.dart';
 import 'package:flutter_fruits_animation/components/follow.dart';
@@ -16,9 +14,11 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   final gradientColors = [
-    HomeGradient(0, AppColors.strawberry, AppColors.strawberry_light, "Strawberry"),
+    HomeGradient(
+        0, AppColors.strawberry, AppColors.strawberry_light, "Strawberry"),
     HomeGradient(1, AppColors.orange, AppColors.orange_light, "Orange"),
     HomeGradient(2, AppColors.apple, AppColors.apple_light, "Apple"),
   ];
@@ -32,12 +32,14 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this, duration: duration); // Repeats the animation
+    _controller = AnimationController(
+        vsync: this, duration: duration); // Repeats the animation
     setAnimatedValues(2);
     _toggleAnimation(2);
   }
 
-  CurvedAnimation curve(ctrl) => CurvedAnimation(parent: ctrl, curve: Curves.elasticOut);
+  CurvedAnimation curve(ctrl) =>
+      CurvedAnimation(parent: ctrl, curve: Curves.elasticOut);
   setAnimatedValues(index) {
     _rotationAnimation = Tween<double>(
       begin: index > activeIndex ? 0.4 * 3.14159 : -0.4 * 3.14159,
@@ -79,7 +81,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             curve: Curves.elasticOut,
             decoration: BoxDecoration(
               gradient: RadialGradient(
-                colors: [gradientColors[activeIndex].light, gradientColors[activeIndex].color],
+                colors: [
+                  gradientColors[activeIndex].light,
+                  gradientColors[activeIndex].color
+                ],
                 radius: 0.6,
               ),
             ),
@@ -97,7 +102,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                     offset: _textTranslationAnimation?.value ?? Offset.zero,
                     child: Text(
                       gradientColors[activeIndex].title.toUpperCase(),
-                      style: const TextStyle(fontSize: 160, fontWeight: FontWeight.w900, color: AppColors.white),
+                      style: const TextStyle(
+                          fontSize: 160,
+                          fontWeight: FontWeight.w900,
+                          color: AppColors.white),
                       textAlign: TextAlign.center,
                     ),
                   );
@@ -128,7 +136,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
               builder: (context, _) {
                 return Transform(
                   transform: Matrix4.rotationZ(_rotationAnimation?.value ?? 0),
-                  child: Transform.scale(scale: 2.5, child: Image.asset("assets/images/can_$activeIndex.png")),
+                  child: Transform.scale(
+                      scale: 2.5,
+                      child: Image.asset("assets/images/can_$activeIndex.png")),
                 );
               },
             ),
@@ -142,7 +152,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                 width: Sizing.width(context) / 4,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: AppColors.white, width: Sizing.width(context) / 300),
+                  border: Border.all(
+                      color: AppColors.white,
+                      width: Sizing.width(context) / 300),
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15),
@@ -196,8 +208,16 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                     ? AppColors.orange
                     : AppColors.apple,
             border: BorderDirectional(
-              start: index == 0 ? BorderSide.none : BorderSide(color: AppColors.white, width: Sizing.width(context) / 450),
-              end: index == 2 ? BorderSide.none : BorderSide(color: AppColors.white, width: Sizing.width(context) / 450),
+              start: index == 0
+                  ? BorderSide.none
+                  : BorderSide(
+                      color: AppColors.white,
+                      width: Sizing.width(context) / 450),
+              end: index == 2
+                  ? BorderSide.none
+                  : BorderSide(
+                      color: AppColors.white,
+                      width: Sizing.width(context) / 450),
             ),
           ),
           child: Image.asset("assets/images/card_${index}.png"),

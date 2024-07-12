@@ -12,17 +12,18 @@ class Link {
   Link(this.icon, this.url, this.title);
 }
 
+List<Link> links = [
+  Link("github", "https://github.com/yunweneric/", "Github"),
+  Link("x", "https://twitter.com/yunweneric", "X"),
+  Link("linkedIn", "https://www.linkedin.com/in/yunwen-eric-40517a147/",
+      "LinkedIn"),
+];
+
 class Follow extends StatelessWidget {
   final int activeIndex;
   final Duration duration;
 
-  List<Link> links = [
-    Link("github", "https://github.com/yunweneric/", "Github"),
-    Link("x", "https://twitter.com/yunweneric", "X"),
-    Link("linkedIn", "https://www.linkedin.com/in/yunwen-eric-40517a147/", "LinkedIn"),
-  ];
-
-  Follow({super.key, required this.activeIndex, required this.duration});
+  const Follow({super.key, required this.activeIndex, required this.duration});
 
   linkItem(Link link, BuildContext context) {
     return Padding(
@@ -76,7 +77,8 @@ class Follow extends StatelessWidget {
               color: Colors.white,
               borderRadius: BorderRadius.circular(2),
             ),
-            child: Center(child: Text("Follow For More", style: TextStyle(fontSize: 12))),
+            child: Center(
+                child: Text("Follow For More", style: TextStyle(fontSize: 12))),
           ),
           SizedBox(height: 5),
           Container(
@@ -104,7 +106,8 @@ class Follow extends StatelessWidget {
               color: Colors.white,
               borderRadius: BorderRadius.circular(2),
             ),
-            child: Center(child: Text("Coded by Yunwen", style: TextStyle(fontSize: 12))),
+            child: Center(
+                child: Text("Coded by Yunwen", style: TextStyle(fontSize: 12))),
           ),
         ],
       ),
